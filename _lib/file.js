@@ -6,6 +6,7 @@ function upsertFile(filePath, contents) {
     if (!contents) {
       contents = '';  // 함수 매개변수에 값을 할당하는 것은 좋지 않다
     } */
+    const contentsTmp = contents || '';
 
     /**
      * https://nodejs.dev/learn/working-with-file-descriptors-in-nodejs
@@ -13,7 +14,7 @@ function upsertFile(filePath, contents) {
      * - `openSync`는 콜백 함수를 호출하는 대신 `fd` 값을 반환하고, `fd` 값으로 나머지 동작을 수행할 수 있다
      */
     const fd = fs.openSync(filePath, 'w');
-    fs.writeSync(fd, contents);
+    fs.writeSync(fd, contentsTmp);
     fs.closeSync(fd);
     /**
      * 결과
@@ -26,4 +27,8 @@ function upsertFile(filePath, contents) {
   return 'already exist';
 }
 
-export { upsertFile };
+function getFileMetadata(filePath) {
+  return fs.statSync(filePath);
+}
+
+export { upsertFile, getFileMetadata };
