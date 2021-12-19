@@ -19,6 +19,12 @@
     "url": "https://github.com/aimpugn/learnnode/issues"
   },
   "homepage": "https://github.com/aimpugn/learnnode#readme",
+  "dependencies": {
+    "console-table-printer": "2.10.0",
+    "lru-cache": "6.0.0",
+    "node-cache": "5.1.2",
+    "object-sizeof": "1.6.1"
+  },
   "devDependencies": {
     "eslint": "7.30.0",
     "eslint-config-airbnb": "18.2.1",
